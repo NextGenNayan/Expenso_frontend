@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — Expenso</title>
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="css/responsive.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="container navbar-inner">
+    <a href="index.html" class="brand">
+      <div class="brand-mark"><i class="fa-solid fa-feather-pointed"></i></div>
+      <div>
+        <div class="brand-text">Expenso</div>
+        <div class="brand-sub">Expense Tracker</div>
+      </div>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><i class="fa-solid fa-bars"></i></button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dashboard.html" class="active">Dashboard</a></li>
+      <li><a href="reports.html">Reports</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="login.html">Log In</a></li>
+    </ul>
+
+    <div class="navbar-actions">
+      <a href="reports.html" class="btn btn-ghost"><i class="fa-solid fa-chart-line"></i> Reports</a>
+      <a href="login.html" class="btn btn-ghost"><i class="fa-solid fa-right-to-bracket"></i> Log In</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+
+  <div class="page-header">
+    <p class="eyebrow">Overview</p>
+    <h1 class="page-title">HELLO, <span id="userName">Rohan</span></h1>
+    <p class="page-subtitle">Here's what's happening with your money this month.</p>
+  </div>
+
+  <div class="dash-toolbar">
+    <div class="search-wrap">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="searchInput" placeholder="Search transactions…">
+    </div>
+    <button class="btn btn-primary" id="openFormBtn"><i class="fa-solid fa-plus"></i> Add Expense</button>
+  </div>
+
+  <!-- STAT CARDS -->
+  <section class="cards-row">
+    <div class="stat-card balance">
+      <div class="stat-top">
+        <div class="stat-icon"><i class="fa-solid fa-wallet"></i></div>
+        <div class="stat-trend up" id="balanceTrend"><i class="fa-solid fa-arrow-up"></i> 0%</div>
+      </div>
+      <p class="stat-label">Total Balance</p>
+      <p class="stat-value num" id="statBalance">₹0</p>
+      <p class="stat-sub">Across all accounts</p>
+    </div>
+
+    <div class="stat-card income">
+      <div class="stat-top">
+        <div class="stat-icon"><i class="fa-solid fa-arrow-down-to-bracket"></i></div>
+        <div class="stat-trend up"><i class="fa-solid fa-arrow-up"></i> 12.4%</div>
+      </div>
+      <p class="stat-label">Income</p>
+      <p class="stat-value num" id="statIncome">₹0</p>
+      <p class="stat-sub">This month</p>
+    </div>
+
+    <div class="stat-card expense">
+      <div class="stat-top">
+        <div class="stat-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+        <div class="stat-trend down"><i class="fa-solid fa-arrow-down"></i> 4.1%</div>
+      </div>
+      <p class="stat-label">Expense</p>
+      <p class="stat-value num" id="statExpense">₹0</p>
+      <p class="stat-sub">This month</p>
+    </div>
+
+    <div class="stat-card savings">
+      <div class="stat-top">
+        <div class="stat-icon"><i class="fa-solid fa-piggy-bank"></i></div>
+        <div class="stat-trend up"><i class="fa-solid fa-arrow-up"></i></div>
+      </div>
+      <p class="stat-label">Savings</p>
+      <p class="stat-value num" id="statSavings">₹0</p>
+      <p class="stat-sub" id="savingsSub">of income saved</p>
+    </div>
+  </section>
+
+  <!-- CONTENT GRID -->
+  <section class="content-grid">
+
+    <div class="col">
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h2 class="panel-title">Monthly Overview</h2>
+            <p class="panel-sub">Income vs. expense, last 6 months</p>
+          </div>
+        </div>
+        <div class="chart-legend">
+          <span><i class="dot" style="background:var(--emerald)"></i> Income</span>
+          <span><i class="dot" style="background:var(--rust)"></i> Expense</span>
+        </div>
+        <div class="chart-wrap"><canvas id="overviewChart"></canvas></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h2 class="panel-title">Recent Transactions</h2>
+            <p class="panel-sub" id="txCount">— entries</p>
+          </div>
+          <a href="reports.html" class="link-btn">View reports <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="tx-toolbar">
+          <button class="chip-filter active" data-filter="all">All</button>
+          <button class="chip-filter" data-filter="income">Income</button>
+          <button class="chip-filter" data-filter="expense">Expense</button>
+        </div>
+        <div class="tx-list" id="txList"></div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="panel" id="formPanel">
+        <div class="panel-head">
+          <div>
+            <h2 class="panel-title">Add Expense</h2>
+            <p class="panel-sub">Log a new transaction</p>
+          </div>
+          <i class="fa-solid fa-ticket" style="color:var(--muted)"></i>
+        </div>
+        <div class="panel-body">
+          <form id="txForm">
+            <div class="type-toggle">
+              <button type="button" class="active expense-mode" data-type="expense">Expense</button>
+              <button type="button" class="income-mode" data-type="income">Income</button>
+            </div>
+
+            <div class="field">
+              <label for="descInput">Description</label>
+              <input type="text" id="descInput" placeholder="e.g. Grocery run at D-Mart" required>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="amountInput">Amount</label>
+                <div class="amount-field">
+                  <span>₹</span>
+                  <input type="number" id="amountInput" min="0" step="0.01" placeholder="0.00" required>
+                </div>
+              </div>
+              <div class="field">
+                <label for="dateInput">Date</label>
+                <input type="date" id="dateInput" required>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="categoryInput">Category</label>
+              <select id="categoryInput"></select>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block"><i class="fa-solid fa-plus"></i> Add Transaction</button>
+            <div class="form-msg success" id="formMsg"><i class="fa-solid fa-circle-check"></i> Transaction added.</div>
+          </form>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h2 class="panel-title">Expense Categories</h2>
+            <p class="panel-sub">Where your money went</p>
+          </div>
+        </div>
+        <div class="cat-donut-wrap"><canvas id="catDonut"></canvas></div>
+        <div class="panel-body">
+          <div class="cat-list" id="catList"></div>
+        </div>
+      </div>
+
+      <div class="demo-note">
+        <i class="fa-solid fa-circle-info"></i>
+        <span>Your transactions are saved to this browser's local storage, so they'll still be here next time you open Expenso on this device.</span>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="brand-text">Expenso</div>
+      <p>A clean, professional expense tracker for people who don't want to fight a spreadsheet.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="reports.html">Reports</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span id="footerYear"></span> Expenso. Built with HTML, CSS &amp; JavaScript.</span>
+    <span>Front-end demo — data stored locally in your browser.</span>
+  </div>
+</footer>
+
+<script src="js/storage.js"></script>
+<script src="js/main.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

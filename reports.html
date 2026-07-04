@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reports — Expenso</title>
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/reports.css">
+<link rel="stylesheet" href="css/responsive.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="container navbar-inner">
+    <a href="index.html" class="brand">
+      <div class="brand-mark"><i class="fa-solid fa-feather-pointed"></i></div>
+      <div>
+        <div class="brand-text">Expenso</div>
+        <div class="brand-sub">Expense Tracker</div>
+      </div>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><i class="fa-solid fa-bars"></i></button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="reports.html" class="active">Reports</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="login.html">Log In</a></li>
+    </ul>
+
+    <div class="navbar-actions">
+      <a href="dashboard.html" class="btn btn-ghost"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+      <a href="login.html" class="btn btn-ghost"><i class="fa-solid fa-right-to-bracket"></i> Log In</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+
+  <div class="page-header">
+    <p class="eyebrow">Insights</p>
+    <h1 class="page-title">Reports &amp; Insights</h1>
+    <p class="page-subtitle">See where your money actually goes, month over month.</p>
+  </div>
+
+  <div class="reports-toolbar">
+    <div class="range-group">
+      <button class="range-btn" data-range="3">3 Months</button>
+      <button class="range-btn active" data-range="6">6 Months</button>
+      <button class="range-btn" data-range="12">12 Months</button>
+      <button class="range-btn" data-range="all">All Time</button>
+    </div>
+    <button class="btn btn-ghost" id="exportBtn"><i class="fa-solid fa-file-arrow-down"></i> Export CSV</button>
+  </div>
+
+  <!-- SUMMARY CARDS -->
+  <section class="summary-row">
+    <div class="summary-card">
+      <div class="summary-label"><i class="fa-solid fa-arrow-down-to-bracket"></i> Total Income</div>
+      <div class="summary-value emerald num" id="sumIncome">₹0</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-label"><i class="fa-solid fa-cart-shopping"></i> Total Expense</div>
+      <div class="summary-value rust num" id="sumExpense">₹0</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-label"><i class="fa-solid fa-piggy-bank"></i> Net Savings</div>
+      <div class="summary-value gold num" id="sumSavings">₹0</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-label"><i class="fa-solid fa-calendar-days"></i> Avg. Monthly Spend</div>
+      <div class="summary-value num" id="sumAvg">₹0</div>
+    </div>
+  </section>
+
+  <!-- TREND + CATEGORY CHART -->
+  <section class="report-grid">
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h2 class="panel-title">Income vs. Expense Trend</h2>
+          <p class="panel-sub">Monthly totals for the selected range</p>
+        </div>
+      </div>
+      <div class="big-chart-wrap"><canvas id="trendChart"></canvas></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h2 class="panel-title">Top Categories</h2>
+          <p class="panel-sub">By total spend</p>
+        </div>
+      </div>
+      <div class="bar-chart-wrap"><canvas id="categoryChart"></canvas></div>
+    </div>
+  </section>
+
+  <!-- CATEGORY TABLE + TOP EXPENSES -->
+  <section class="report-grid">
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h2 class="panel-title">Category Breakdown</h2>
+          <p class="panel-sub">Every category, ranked by spend</p>
+        </div>
+      </div>
+      <div class="panel-body">
+        <table class="rep-table">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th style="text-align:right;">Amount</th>
+              <th>Transactions</th>
+              <th>Share</th>
+            </tr>
+          </thead>
+          <tbody id="repTableBody"></tbody>
+        </table>
+        <p class="export-note">Want the raw numbers? Use "Export CSV" above to download this range.</p>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h2 class="panel-title">Largest Expenses</h2>
+          <p class="panel-sub">Top 5 in this range</p>
+        </div>
+      </div>
+      <div class="top-list" id="topList"></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="brand-text">Expenso</div>
+      <p>A clean, professional expense tracker for people who don't want to fight a spreadsheet.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="reports.html">Reports</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span id="footerYear"></span> Expenso. Built with HTML, CSS &amp; JavaScript.</span>
+    <span>Front-end demo — data stored locally in your browser.</span>
+  </div>
+</footer>
+
+<script src="js/storage.js"></script>
+<script src="js/main.js"></script>
+<script src="js/reports.js"></script>
+</body>
+</html>

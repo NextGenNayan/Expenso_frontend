@@ -1,0 +1,66 @@
+/* =========================================================
+   Expenso — Expense Tracker
+   responsive.css — media queries for every page
+   Load this LAST on every page, after style.css + page css
+   ========================================================= */
+
+/* ---------- Large tablets ---------- */
+@media (max-width: 1180px){
+  .cards-row{ grid-template-columns:repeat(2,1fr); }
+  .content-grid{ grid-template-columns:1fr; }
+  .report-grid{ grid-template-columns:1fr; }
+  .summary-row{ grid-template-columns:repeat(2,1fr); }
+  .hero-inner{ grid-template-columns:1fr; }
+  .hero-visual{ order:-1; max-width:460px; margin:0 auto; width:100%; }
+  .feature-grid{ grid-template-columns:repeat(2,1fr); }
+  .steps{ grid-template-columns:1fr; gap:24px; }
+  .step-connector{ display:none; }
+}
+
+/* ---------- Tablets / nav collapse ---------- */
+@media (max-width: 900px){
+  .nav-toggle{ display:flex; }
+  .nav-links{
+    position:fixed; top:69px; left:0; right:0; bottom:0;
+    background:var(--paper);
+    flex-direction:column; align-items:stretch;
+    padding:18px 20px; gap:4px;
+    transform:translateY(-110%);
+    transition:transform .2s ease;
+    z-index:49;
+    overflow-y:auto;
+  }
+  .nav-links.open{ transform:translateY(0); }
+  .nav-links a{ padding:13px 14px; font-size:15px; border-bottom:1px solid var(--line); border-radius:0; }
+  .navbar-actions .btn-primary{ display:none; }
+  .nav-links .nav-cta-mobile{ display:block; margin-top:10px; }
+
+  .main-content{ padding:0 18px; }
+  .container{ padding:0 18px; }
+}
+
+/* ---------- Phones ---------- */
+@media (max-width: 640px){
+  .cards-row{ grid-template-columns:1fr 1fr; }
+  .summary-row{ grid-template-columns:1fr 1fr; }
+  .page-title{ font-size:23px; }
+  .hero-title{ font-size:32px; }
+  .dash-toolbar{ flex-direction:column; align-items:stretch; }
+  #searchInput{ width:100%; }
+  .field-row{ grid-template-columns:1fr; }
+  .tx-row{ grid-template-columns:32px 1fr auto 26px; }
+  .tx-date-col{ display:none; }
+  .feature-grid{ grid-template-columns:1fr; }
+  .cta-banner{ padding:40px 22px; }
+  .footer-inner{ flex-direction:column; gap:28px; }
+  .reports-toolbar{ flex-direction:column; align-items:stretch; }
+  .range-group{ justify-content:space-between; }
+}
+
+@media (max-width: 420px){
+  .cards-row, .summary-row{ grid-template-columns:1fr; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ transition:none !important; animation:none !important; scroll-behavior:auto !important; }
+}

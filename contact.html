@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Expenso</title>
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="container navbar-inner">
+    <a href="index.html" class="brand">
+      <div class="brand-mark"><i class="fa-solid fa-feather-pointed"></i></div>
+      <div>
+        <div class="brand-text">Expenso</div>
+        <div class="brand-sub">Expense Tracker</div>
+      </div>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><i class="fa-solid fa-bars"></i></button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="reports.html">Reports</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="login.html">Log In</a></li>
+    </ul>
+
+    <div class="navbar-actions">
+      <a href="login.html" class="btn btn-ghost"><i class="fa-solid fa-right-to-bracket"></i> Log In</a>
+      <a href="dashboard.html" class="btn btn-primary"><i class="fa-solid fa-gauge"></i> Open Dashboard</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+
+  <div class="page-header">
+    <p class="eyebrow">Get in touch</p>
+    <h1 class="page-title">We'd love to hear from you</h1>
+    <p class="page-subtitle">Questions, feedback or feature requests — send them over and we'll get back to you.</p>
+  </div>
+
+  <section class="contact-grid">
+
+    <!-- LEFT: form -->
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h2 class="panel-title">Send a message</h2>
+          <p class="panel-sub">This is a front-end demo form — nothing is actually sent anywhere.</p>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="form-success" id="formSuccess"><i class="fa-solid fa-circle-check"></i> Thanks — your message looks great. We'll be in touch soon.</div>
+        <form id="contactForm">
+          <div class="field-row">
+            <div class="field">
+              <label for="nameInput">Name</label>
+              <input type="text" id="nameInput" placeholder="Your full name" required>
+            </div>
+            <div class="field">
+              <label for="emailInput">Email</label>
+              <input type="email" id="emailInput" placeholder="you@example.com" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="subjectInput">Subject</label>
+            <select id="subjectInput">
+              <option>General question</option>
+              <option>Feature request</option>
+              <option>Bug report</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="messageInput">Message</label>
+            <textarea id="messageInput" placeholder="Tell us what's on your mind…" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- RIGHT: info + faq -->
+    <div>
+      <div class="contact-info-list">
+        <div class="contact-info-card">
+          <div class="contact-info-icon"><i class="fa-solid fa-envelope"></i></div>
+          <div>
+            <h4>Email</h4>
+            <p>nypawar008@gmail.com</p>
+          </div>
+        </div>
+        <div class="contact-info-card">
+          <div class="contact-info-icon"><i class="fa-solid fa-phone"></i></div>
+          <div>
+            <h4>Phone</h4>
+            <p>+91 9960942802 (Mon–Fri, 10am–6pm IST)</p>
+          </div>
+        </div>
+        <div class="contact-info-card">
+          <div class="contact-info-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <div>
+            <h4>Office</h4>
+            <p>Bārāmati, Maharashtra, India</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h2 class="panel-title">Frequently asked</h2>
+            <p class="panel-sub">Quick answers before you write in</p>
+          </div>
+        </div>
+        <div class="panel-body">
+          <details class="faq-item" open>
+            <summary>Is my data uploaded anywhere?</summary>
+            <p>No. Expenso stores every transaction in your browser's local storage. Nothing is sent to a server.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can I use Expenso on my phone?</summary>
+            <p>Yes — the whole site is fully responsive, from the dashboard cards down to the transaction list.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can I export my transactions?</summary>
+            <p>Open the Reports page and use "Export CSV" to download the transactions in your selected date range.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Will I lose my data if I clear my browser?</summary>
+            <p>Clearing your browser's site data will reset Expenso back to its sample transactions, so export first if you want to keep a copy.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="brand-text">Expenso</div>
+      <p>A clean, professional expense tracker for people who don't want to fight a spreadsheet.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="reports.html">Reports</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span id="footerYear"></span> Expenso. Built with HTML, CSS &amp; JavaScript.</span>
+    <span>Front-end demo — data stored locally in your browser.</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('formSuccess').classList.add('show');
+    e.target.reset();
+  });
+</script>
+</body>
+</html>

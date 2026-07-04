@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expenso — Know exactly where your money goes</title>
+<meta name="description" content="Expenso is a simple, professional expense tracker to log spending, categorize transactions and understand your monthly habits.">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="container navbar-inner">
+    <a href="index.html" class="brand">
+      <div class="brand-mark"><i class="fa-solid fa-feather-pointed"></i></div>
+      <div>
+        <div class="brand-text">Expenso</div>
+        <div class="brand-sub">Expense Tracker</div>
+      </div>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><i class="fa-solid fa-bars"></i></button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="reports.html">Reports</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="login.html">Log In</a></li>
+      <li class="nav-cta-mobile"><a href="dashboard.html" class="btn btn-primary btn-block">Open Dashboard</a></li>
+    </ul>
+
+    <div class="navbar-actions">
+      <a href="login.html" class="btn btn-ghost"><i class="fa-solid fa-right-to-bracket"></i> Log In</a>
+      <a href="dashboard.html" class="btn btn-primary"><i class="fa-solid fa-gauge"></i> Open Dashboard</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-inner">
+    <div>
+      <span class="hero-eyebrow"><i class="fa-solid fa-sparkles"></i> Personal finance, simplified</span>
+      <h1 class="hero-title">Know exactly<br>where your <em>money</em> goes.</h1>
+      <p class="hero-text">Expenso is a clean, professional expense tracker. Log every rupee, sort it into categories automatically, and watch your monthly trends take shape — no spreadsheets required.</p>
+      <div class="hero-actions">
+        <a href="dashboard.html" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Start Tracking Free</a>
+        <a href="reports.html" class="btn btn-ghost"><i class="fa-solid fa-chart-line"></i> See Sample Reports</a>
+      </div>
+      <div class="hero-trust"><i class="fa-solid fa-shield-halved"></i> Your data stays in your browser — nothing is uploaded to a server.</div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hv-row">
+        <div>
+          <div class="hv-label">Total Balance</div>
+          <div class="hv-balance num">₹64,240</div>
+        </div>
+        <span class="hv-badge"><i class="fa-solid fa-arrow-up"></i> 12%</span>
+      </div>
+      <div class="hv-list">
+        <div class="hv-item">
+          <div class="hv-icon" style="background:#E4EFE7;color:#1F6D4C;"><i class="fa-solid fa-sack-dollar"></i></div>
+          <div style="flex:1;">
+            <div class="hv-desc">Monthly Salary</div>
+            <div class="hv-cat">Salary / Income</div>
+          </div>
+          <div class="hv-amt" style="color:#1F6D4C;">+ ₹68,000</div>
+        </div>
+        <div class="hv-item">
+          <div class="hv-icon" style="background:#E4EFE7;color:#1F6D4C;"><i class="fa-solid fa-basket-shopping"></i></div>
+          <div style="flex:1;">
+            <div class="hv-desc">D-Mart grocery run</div>
+            <div class="hv-cat">Groceries</div>
+          </div>
+          <div class="hv-amt" style="color:#B84A3E;">− ₹2,340</div>
+        </div>
+        <div class="hv-item">
+          <div class="hv-icon" style="background:#F3EAD8;color:#B9862F;"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+          <div style="flex:1;">
+            <div class="hv-desc">Electricity bill</div>
+            <div class="hv-cat">Bills &amp; Utilities</div>
+          </div>
+          <div class="hv-amt" style="color:#B84A3E;">− ₹1,810</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Why Expenso</div>
+      <h2 class="section-title">Everything a tracker should do</h2>
+      <p class="section-text">No clutter, no logins, no learning curve — just a fast, clear picture of your money.</p>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fa-solid fa-receipt"></i></div>
+        <h3>Track every transaction</h3>
+        <p>Add income or expenses in seconds with a two-tap form — description, amount, category, date.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fa-solid fa-layer-group"></i></div>
+        <h3>Automatic categorizing</h3>
+        <p>Nine built-in categories, each with its own icon and color, so your spending is organized from day one.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fa-solid fa-chart-pie"></i></div>
+        <h3>Visual reports</h3>
+        <p>Monthly trend lines, category breakdowns and top-expense lists — powered by real charts, not guesswork.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <h3>Instant search</h3>
+        <p>Filter transactions by name or category the moment you start typing — no page reloads.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fa-solid fa-lock"></i></div>
+        <h3>Private by default</h3>
+        <p>Everything is saved locally in your browser's storage. There's no account and nothing leaves your device.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+        <h3>Works everywhere</h3>
+        <p>A fully responsive layout that's just as comfortable on your phone as it is on a widescreen monitor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">How it works</div>
+      <h2 class="section-title">Three steps to a clearer budget</h2>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-connector"></div>
+        <div class="step-num" data-num="1">Add a transaction</div>
+        <h3>Log income or expense</h3>
+        <p>Enter what you spent or earned, pick a category, and set the date. Takes about ten seconds.</p>
+      </div>
+      <div class="step">
+        <div class="step-connector"></div>
+        <div class="step-num" data-num="2">Watch it get sorted</div>
+        <h3>Categorized automatically</h3>
+        <p>Every entry is grouped into a category card and rolled into your monthly totals in real time.</p>
+      </div>
+      <div class="step">
+        <div class="step-num" data-num="3">Read your trends</div>
+        <h3>Understand your habits</h3>
+        <p>Open Reports to see where your money actually goes, month over month.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="cta-banner">
+      <h2>Start tracking your expenses today</h2>
+      <p>It's free, it's fast, and your first transaction is already waiting in the dashboard.</p>
+      <div class="cta-actions">
+        <a href="dashboard.html" class="btn btn-primary"><i class="fa-solid fa-gauge"></i> Open Dashboard</a>
+        <a href="contact.html" class="btn btn-outline-inverse">Have a question?</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="brand-text">Expenso</div>
+      <p>A clean, professional expense tracker for people who don't want to fight a spreadsheet.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="reports.html">Reports</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="dashboard.html">Food &amp; Dining</a></li>
+        <li><a href="dashboard.html">Transport</a></li>
+        <li><a href="dashboard.html">Bills &amp; Utilities</a></li>
+        <li><a href="dashboard.html">Shopping</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span id="footerYear"></span> Expenso. Built with HTML, CSS &amp; JavaScript.</span>
+    <span>Front-end demo — data stored locally in your browser.</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
